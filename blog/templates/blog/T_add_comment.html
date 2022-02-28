@@ -1,0 +1,16 @@
+{% extends 'T_base.html' %}
+{% block title %} Comment On Blog Post!{% endblock %}
+{% block content %}
+
+
+<h1>Add Comment...</h1>
+
+<div class="mb-5 form-group">
+  <form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary">Add Csomment</button>
+  </form>
+</div>
+
+{% endblock %}

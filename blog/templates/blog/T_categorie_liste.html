@@ -1,0 +1,10 @@
+{% extends 'T_base.html' %}
+{% block title %} Blog categories {% endblock %}
+{% block content %}
+<h1>Blog categories</h1>
+<ul>
+{% for item in TPL_cat_list %}
+<li><h4><a class="dropdown-item" href="{% url 'L_categorie_article_liste' item|slugify %}">{{ item }}</a></h4></li>
+{% endfor %}
+</ul>
+  {% endblock %}

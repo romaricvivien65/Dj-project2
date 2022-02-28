@@ -1,0 +1,28 @@
+{% extends 'T_base.html' %}
+{% block title %} Create a new Blog Post!{% endblock %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<h1>Add Blog Post...</h1>
+
+<div class="mb-5 form-group">
+  <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.media }}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary">Post</button>
+  </form>
+</div>
+
+<script>
+ var name = "{{ user.id }}";
+ document.getElementById("author_id").value = name
+</script>
+{% else %}
+
+You're not allowed here ! (And you know it...)
+
+{% endif %}
+
+{% endblock %}

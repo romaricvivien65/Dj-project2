@@ -1,0 +1,27 @@
+{% extends 'T_base.html' %}
+
+{% block content %}
+{% if TPL_category_post %}
+<h1>{{ TPL_cats }}</h1>
+<ul>
+{% for post in TPL_category_post %}
+<li><a href="{% url 'L_article_details' post.pk %}">{{ post.title }}</a>
+  {{ post.author.first_name }} {{ post.author.last_name }} - {{ post.post_date }}
+  {% if user.is_authenticated %}
+  - <small> <a href="{% url 'L_article_update' post.pk %}">(Edit)</a> / <a
+      href="{% url 'L_article_delete' post.pk %}">(Delete)</a>
+  </small>
+  {% endif %}
+
+  <br>
+  {{ post.body | slice:":150"|safe }} ...
+</li>
+
+{% endfor %}
+</ul>
+{% else %}
+
+<h2>Sorry, this page does not exist...</h2>
+
+{% endif %}
+{% endblock %}
